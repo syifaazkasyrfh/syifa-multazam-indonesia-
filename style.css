@@ -244,7 +244,7 @@ footer{background:var(--deep)}.foot{padding:65px 0}.copy{background:#041d18}
 .hero-bg{
   background:
     linear-gradient(90deg,rgba(28,25,21,.62) 0%,rgba(44,38,30,.34) 48%,rgba(30,27,23,.18) 100%),
-    url('images/makkah-warm-blur-hero.png') center/cover no-repeat !important;
+    url('images/makkah-hero-clean.jpg') center/cover no-repeat !important;
   transform:scale(1.035);
   filter:saturate(.82) contrast(.96) brightness(.94) blur(.15px);
 }
@@ -253,3 +253,70 @@ footer{background:var(--deep)}.foot{padding:65px 0}.copy{background:#041d18}
 .hero .eyebrow{color:#f0d79d !important;}
 .hero .quote{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.28);}
 @media(max-width:900px){.hero-bg{background-position:center center !important;}}
+
+/* FINAL HERO — warm dreamy Makkah reference */
+.hero-bg{
+  background-image:
+    linear-gradient(90deg, rgba(18,25,22,.82) 0%, rgba(24,31,27,.52) 38%, rgba(24,29,26,.12) 72%, rgba(24,29,26,.08) 100%),
+    url('images/makkah-hero-clean.jpg') !important;
+  background-position:center center !important;
+  background-size:cover !important;
+  filter:none !important;
+  transform:scale(1.02) !important;
+}
+.hero{background:#6c675d !important}
+.hero-content{grid-template-columns:1fr .45fr !important}
+.hero h1{max-width:720px !important}
+.hero h1 em{color:#e7c987 !important}
+.hero .eyebrow{color:#ead39d !important;border-color:rgba(234,211,157,.32)!important}
+.hero .quote{background:rgba(20,26,23,.24)!important;backdrop-filter:blur(14px)!important}
+.hero .btn.gold{background:linear-gradient(135deg,#f0dca7,#d2ad65)!important;color:#26342f!important}
+.hero .btn.outline{background:rgba(18,24,21,.16)!important;backdrop-filter:blur(8px)!important}
+@media(max-width:900px){
+  .hero-content{grid-template-columns:1fr !important}
+  .hero-bg{background-position:58% center !important}
+}
+
+/* ==========================================================
+   EXACT REFERENCE HERO
+   The uploaded reference is used as the hero artwork so the
+   first screen matches the supplied image exactly.
+   ========================================================== */
+.hero{
+  position:relative !important;
+  min-height:100vh !important;
+  height:100vh !important;
+  padding:0 !important;
+  overflow:hidden !important;
+  background:#27312d url('images/hero-reference.png') center center / cover no-repeat !important;
+}
+.hero-bg{display:none !important;}
+.hero-content{display:block !important;position:absolute !important;inset:0 !important;z-index:2 !important;pointer-events:none !important;}
+.hero-content > div:first-child,.hero-content .quote{display:none !important;}
+.hero::after{display:none !important;}
+#navbar{visibility:hidden !important;pointer-events:none !important;}
+.reference-hotspots{position:absolute;inset:0;z-index:8;pointer-events:none;}
+.reference-hotspots .hotspot{position:absolute;display:block;pointer-events:auto;outline:none;}
+.reference-hotspots .hotspot:hover{background:rgba(255,255,255,.035);border-radius:999px;}
+.hs-home{left:31.2%;top:4.6%;width:5.3%;height:6.2%;}
+.hs-tentang{left:38.4%;top:4.6%;width:5.8%;height:6.2%;}
+.hs-paket{left:45.3%;top:4.6%;width:7.3%;height:6.2%;}
+.hs-fasilitas{left:53.7%;top:4.6%;width:6.0%;height:6.2%;}
+.hs-galeri{left:60.9%;top:4.6%;width:5.2%;height:6.2%;}
+.hs-kontak{left:66.2%;top:4.6%;width:5.8%;height:6.2%;}
+.hs-daftar{right:8.1%;top:4.5%;width:10.5%;height:6.6%;}
+.hs-cta1{left:9.0%;top:60.5%;width:16.5%;height:6.5%;}
+.hs-cta2{left:26.8%;top:60.5%;width:10.2%;height:6.5%;}
+.hs-wa{right:3.1%;bottom:13.3%;width:4.0%;height:7.5%;}
+.hs-top{right:2.9%;bottom:4.9%;width:4.0%;height:7.0%;}
+/* Keep the real app-like controls from covering the reference artwork. */
+#back-to-top{display:none !important;}
+.mobile-bottom-nav{display:none !important;}
+/* Make the reference screen occupy a clean, exact 16:9 canvas on desktop. */
+@media (min-width:901px){
+  .hero{aspect-ratio:1664 / 935;min-height:0;height:auto !important;}
+}
+@media (max-width:900px){
+  .hero{height:72vh !important;min-height:560px !important;background-position:center center !important;}
+  .reference-hotspots .hotspot{display:none;}
+}
