@@ -202,3 +202,25 @@ startSlider();
     if(nav?.classList.contains('open')){nav.classList.remove('open');nav.removeAttribute('style')}
   }));
 })();
+
+
+/* =====================================================
+   4X SCROLL — mouse wheel on desktop only
+   Makes each wheel notch travel about 4x farther.
+   Touch/trackpad/mobile scrolling remains native.
+   ===================================================== */
+(function(){
+  if(!window.matchMedia('(pointer:fine)').matches) return;
+  let locked=false;
+  window.addEventListener('wheel',function(e){
+    if(e.ctrlKey || Math.abs(e.deltaY)<1) return;
+    // Avoid hijacking horizontal-only gestures.
+    if(Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+    e.preventDefault();
+    if(locked) return;
+    locked=true;
+    const multiplier=4;
+    window.scrollBy({top:e.deltaY*multiplier,left:0,behavior:'auto'});
+    requestAnimationFrame(()=>{locked=false;});
+  },{passive:false});
+})();

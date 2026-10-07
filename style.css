@@ -235,3 +235,21 @@ footer{background:var(--deep)}.foot{padding:65px 0}.copy{background:#041d18}
   .section{padding:72px 0}.two h2,.heading h2{font-size:34px}.visual{height:330px}.visual:before,.visual-box{inset:0 26px 24px 0}.visual:after{inset:18px 0 0 22px}.checks{gap:8px}.checks span{font-size:11px}
   .owner-slider{height:450px;width:min(330px,100%)}.owner-content h3{font-size:30px}.owner-content p{font-size:12px}.gallery-main{height:330px}.gallery-main figcaption{left:20px;bottom:20px}.gallery-main figcaption strong{font-size:20px}.gallery-note{padding:30px}.cta h2{font-size:38px}.cta .btn{display:block;width:max-content;max-width:100%;margin:12px auto 0}
 }
+
+
+/* =====================================================
+   MAKKAH WARM BLUR HERO — final visual override
+   ===================================================== */
+.hero{background:#514b42 !important;}
+.hero-bg{
+  background:
+    linear-gradient(90deg,rgba(28,25,21,.62) 0%,rgba(44,38,30,.34) 48%,rgba(30,27,23,.18) 100%),
+    url('images/makkah-warm-blur-hero.png') center/cover no-repeat !important;
+  transform:scale(1.035);
+  filter:saturate(.82) contrast(.96) brightness(.94) blur(.15px);
+}
+.hero:after{background:linear-gradient(transparent,rgba(25,22,18,.38)) !important;}
+.hero h1 em{color:#f0d79d !important;}
+.hero .eyebrow{color:#f0d79d !important;}
+.hero .quote{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.28);}
+@media(max-width:900px){.hero-bg{background-position:center center !important;}}
