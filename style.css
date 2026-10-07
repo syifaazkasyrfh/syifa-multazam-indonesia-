@@ -57,3 +57,85 @@
   .owner-slider{width:min(340px,100%);height:510px}
   .owner-slide .photo-caption{font-size:15px}
 }
+
+
+/* ================================
+   CURSOR MAKKAH / KA'BAH
+   ================================ */
+@media (pointer:fine){
+  html, body, a, button, input, textarea, select{
+    cursor:none !important;
+  }
+
+  .makkah-cursor{
+    position:fixed;
+    left:0;
+    top:0;
+    width:42px;
+    height:42px;
+    z-index:99999;
+    pointer-events:none;
+    transform:translate(-50%,-50%);
+    transition:transform .12s ease, width .2s ease, height .2s ease;
+    filter:drop-shadow(0 4px 9px rgba(0,0,0,.25));
+  }
+
+  .makkah-cursor svg{
+    width:100%;
+    height:100%;
+    display:block;
+  }
+
+  .makkah-cursor::after{
+    content:'';
+    position:absolute;
+    inset:-7px;
+    border:1px solid #c6a15b66;
+    border-radius:50%;
+    animation:makkahCursorGlow 2s ease-in-out infinite;
+  }
+
+  .makkah-cursor.is-hover{
+    width:50px;
+    height:50px;
+  }
+
+  .makkah-cursor.is-click{
+    transform:translate(-50%,-50%) scale(.82);
+  }
+
+  .makkah-cursor-dot{
+    position:fixed;
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:#e4c982;
+    pointer-events:none;
+    z-index:99998;
+    transform:translate(-50%,-50%);
+    box-shadow:0 0 10px #e4c982aa;
+  }
+
+  .makkah-cursor-trail{
+    position:fixed;
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#c6a15b;
+    pointer-events:none;
+    z-index:99997;
+    transform:translate(-50%,-50%);
+    opacity:.45;
+    animation:makkahTrailFade .55s ease-out forwards;
+  }
+
+  @keyframes makkahCursorGlow{
+    0%,100%{transform:scale(.85);opacity:.35}
+    50%{transform:scale(1.15);opacity:.8}
+  }
+
+  @keyframes makkahTrailFade{
+    from{transform:translate(-50%,-50%) scale(1);opacity:.5}
+    to{transform:translate(-50%,-50%) scale(0);opacity:0}
+  }
+}
