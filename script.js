@@ -149,3 +149,56 @@ startSlider();
   window.addEventListener('mousedown', ()=>cursor.classList.add('is-click'));
   window.addEventListener('mouseup', ()=>cursor.classList.remove('is-click'));
 })();
+
+/* =====================================
+   APP-LIKE UPGRADE 2.0
+   ===================================== */
+(function(){
+  const loader=document.getElementById('app-loader');
+  const progress=document.getElementById('scroll-progress');
+  const backTop=document.getElementById('back-to-top');
+  const mobileItems=[...document.querySelectorAll('.mobile-nav-item')];
+  const sections=[...document.querySelectorAll('section[id]')];
+
+  // Loading screen: tetap ringan dan tidak menghalangi jika halaman gagal load.
+  function hideLoader(){ if(loader) loader.classList.add('hide'); }
+  if(document.readyState==='complete') setTimeout(hideLoader,450);
+  else window.addEventListener('load',()=>setTimeout(hideLoader,450),{once:true});
+  setTimeout(hideLoader,3000);
+
+  function updateUI(){
+    const max=document.documentElement.scrollHeight-window.innerHeight;
+    const pct=max>0?(window.scrollY/max)*100:0;
+    if(progress) progress.style.width=Math.min(100,pct)+'%';
+    if(backTop) backTop.classList.toggle('show',window.scrollY>500);
+
+    let current='home';
+    sections.forEach(section=>{
+      if(window.scrollY >= section.offsetTop-180) current=section.id;
+    });
+    mobileItems.forEach(item=>item.classList.toggle('active',item.getAttribute('href')==='#'+current));
+  }
+  window.addEventListener('scroll',updateUI,{passive:true});
+  window.addEventListener('resize',updateUI,{passive:true});
+  updateUI();
+
+  backTop?.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+  // Animasi masuk setiap section/card saat mulai terlihat.
+  const revealTargets=document.querySelectorAll('.section,.stats,.cta,footer .foot,.cards article,.facility>div,.timeline>div,.gallery-main,.gallery-note,.owner-content');
+  revealTargets.forEach(el=>el.classList.add('reveal'));
+  if('IntersectionObserver' in window){
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}
+      });
+    },{threshold:.12,rootMargin:'0px 0px -35px'});
+    revealTargets.forEach(el=>observer.observe(el));
+  }else revealTargets.forEach(el=>el.classList.add('visible'));
+
+  // Tutup menu desktop/mobile lama setelah memilih menu.
+  document.querySelectorAll('a[href^="#"]').forEach(link=>link.addEventListener('click',()=>{
+    const nav=document.getElementById('nav');
+    if(nav?.classList.contains('open')){nav.classList.remove('open');nav.removeAttribute('style')}
+  }));
+})();

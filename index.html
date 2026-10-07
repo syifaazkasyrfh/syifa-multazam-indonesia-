@@ -9,6 +9,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
+<div id="app-loader" class="app-loader" aria-label="Memuat Syifa Multazam Indonesia">
+  <div class="loader-kaaba">🕋</div>
+  <div class="loader-title">Syifa Multazam</div>
+  <div class="loader-subtitle">Indonesia • Menuju Baitullah</div>
+  <div class="loader-bar"><span></span></div>
+</div>
+<div class="scroll-progress" id="scroll-progress"></div>
 <header id="navbar">
   <div class="container nav">
     <a class="logo" href="#home">☾ <span>Syifa Multazam<small>Indonesia</small></span></a>
@@ -200,6 +207,21 @@
   </div>
   <div class="copy">© 2026 Syifa Multazam Indonesia</div>
 </footer>
+
+<!-- Tombol mengambang dan navigasi mobile -->
+<a class="floating-wa" href="https://wa.me/6282190200071" target="_blank" rel="noopener" aria-label="Chat WhatsApp">
+  <span>💬</span><b>Chat</b>
+</a>
+<button class="back-to-top" id="back-to-top" aria-label="Kembali ke atas">↑</button>
+
+<nav class="mobile-bottom-nav" id="mobile-bottom-nav" aria-label="Navigasi cepat">
+  <a href="#home" class="mobile-nav-item active"><span>⌂</span><small>Home</small></a>
+  <a href="#paket" class="mobile-nav-item"><span>✦</span><small>Paket</small></a>
+  <a href="#perjalanan" class="mobile-nav-item"><span>🕌</span><small>Alur</small></a>
+  <a href="#galeri" class="mobile-nav-item"><span>▣</span><small>Galeri</small></a>
+  <a href="#kontak" class="mobile-nav-item"><span>✆</span><small>Kontak</small></a>
+</nav>
+
 <script src="script.js"></script>
 </body>
 </html>

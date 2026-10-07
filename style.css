@@ -139,3 +139,40 @@
     to{transform:translate(-50%,-50%) scale(0);opacity:0}
   }
 }
+
+/* =====================================
+   APP-LIKE UPGRADE 2.0
+   Loading screen • progress • mobile nav
+   floating WhatsApp • back to top • reveal
+   ===================================== */
+body{overflow-x:hidden}
+.app-loader{position:fixed;inset:0;z-index:100000;background:#092d27;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .55s ease,visibility .55s ease}
+.app-loader.hide{opacity:0;visibility:hidden;pointer-events:none}
+.loader-kaaba{font-size:54px;line-height:1;filter:drop-shadow(0 8px 20px #0005);animation:loaderFloat 1.8s ease-in-out infinite}
+.loader-title{font:600 28px 'Playfair Display';margin-top:18px;color:#e4c982}
+.loader-subtitle{font-size:10px;letter-spacing:2px;color:#fff9;margin-top:3px}
+.loader-bar{width:150px;height:3px;background:#fff2;border-radius:10px;margin-top:24px;overflow:hidden}
+.loader-bar span{display:block;width:35%;height:100%;background:#e4c982;border-radius:10px;animation:loaderBar 1.15s ease-in-out infinite}
+@keyframes loaderFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes loaderBar{0%{transform:translateX(-150%)}100%{transform:translateX(430%)}}
+.scroll-progress{position:fixed;left:0;top:0;height:3px;width:0;background:#e4c982;z-index:100001;box-shadow:0 0 10px #e4c98266;transition:width .05s linear}
+.floating-wa{position:fixed;right:22px;bottom:24px;z-index:90;width:58px;height:58px;border-radius:50%;background:#123f36;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 12px 35px #0003;border:1px solid #e4c98266;transition:.25s;text-align:center}
+.floating-wa span{font-size:22px;line-height:20px}.floating-wa b{font-size:7px;letter-spacing:1px;color:#e4c982}.floating-wa:hover{transform:translateY(-5px) scale(1.04);background:#174f43}
+.back-to-top{position:fixed;right:24px;bottom:94px;z-index:90;width:42px;height:42px;border:1px solid #123f3622;border-radius:50%;background:#fff;color:#123f36;box-shadow:0 8px 25px #0002;opacity:0;visibility:hidden;transform:translateY(12px);transition:.25s;cursor:pointer;font-size:18px}
+.back-to-top.show{opacity:1;visibility:visible;transform:translateY(0)}
+.mobile-bottom-nav{display:none}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}.reveal.visible{opacity:1;transform:none}
+
+@media(max-width:900px){
+  body{padding-bottom:76px}
+  .mobile-bottom-nav{position:fixed;display:flex;left:10px;right:10px;bottom:10px;height:64px;z-index:95;background:rgba(255,255,255,.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid #123f3615;border-radius:20px;box-shadow:0 12px 40px #0002;justify-content:space-around;align-items:center}
+  .mobile-nav-item{width:20%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:#75817c;font-size:16px;transition:.2s}
+  .mobile-nav-item small{font-size:8px;font-weight:600;letter-spacing:.2px}.mobile-nav-item.active{color:#123f36}.mobile-nav-item.active span{color:#c6a15b;transform:translateY(-1px)}
+  .floating-wa{right:18px;bottom:88px;width:52px;height:52px}.back-to-top{right:18px;bottom:151px;width:38px;height:38px}
+}
+@media(max-width:520px){
+  .mobile-bottom-nav{left:7px;right:7px;bottom:7px;height:62px;border-radius:18px}
+  .mobile-nav-item{font-size:15px}.mobile-nav-item small{font-size:7px}
+  .floating-wa{right:14px;bottom:81px}.back-to-top{right:14px;bottom:143px}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
